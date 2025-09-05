@@ -1,0 +1,90 @@
+740: 10C0
+— Tester → ECU (0x740). Single Frame заявка; payload: 10 C0.
+— Service 0x10 (Diagnostic Session Control), subfunction 0xC0 → стартиране на диагностична сесия.
+
+760: 50C0003201F4
+— ECU → Tester (0x760). Single Frame отговор; payload: 50 C0 00 03 20 1F (останалото е padding).
+— 0x50 = positive response на 0x10. ECU потвърждава, че е влязъл в диагностичната сесия.
+
+740: 2183
+— Tester → ECU (0x740). Single Frame заявка; payload: 21 83.
+— Искане за четене на данни (UDS service 0x21 — четене на локален идентификатор/ OEM данни).
+
+740: FC(CTS, BS=0, STmin=0ms)
+— Tester → ECU (0x740). Flow Control: Continue To Send, BlockSize=0 (без лимит), STmin=0 ms.
+— Тестерът разрешава на ECU да изпрати последващите Consecutive Frames за дългия отговор.
+
+760: 618339484D314134110100026595616529201203000000000080
+— ECU → Tester (0x760). Сглобен многорамков отговор (FF+CF...); целият payload: 61 83 39 48 4D 31 41 34 11 01 00 02 65 95 61 65 29 20 12 03 00 00 00 00 00 80.
+— 0x61 = positive response на 0x21, съдържа исканите данни.
+
+743: 10C0
+— Tester → ECU (0x743). Single Frame заявка; payload: 10 C0.
+— Diagnostic Session Control към друг ECU адрес.
+
+763: 50C0003201F4
+— ECU → Tester (0x763). Single Frame отговор; payload: 50 C0 00 03 20 1F.
+— Потвърждение за влизане в сесия.
+
+743: 2183
+— Tester → ECU (0x743). Single Frame заявка; payload: 21 83.
+— Четене на локален идентификатор/ OEM данни.
+
+743: FC(CTS, BS=0, STmin=0ms)
+— Tester → ECU (0x743). Flow Control: CTS, без лимит, 0 ms минимален интервал.
+— Разрешение към ECU да прати останалите CF кадри.
+
+763: 618339485030411642517F009214190100062003000000000080
+— ECU → Tester (0x763). Сглобен многорамков отговор; payload: 61 83 39 48 50 30 41 16 42 51 7F 00 92 14 19 01 00 06 20 03 00 00 00 00 00 80.
+— Positive response с данните за 0x21/0x83.
+
+743: 2180
+— Tester → ECU (0x743). Single Frame заявка; payload: 21 80.
+— Четене на друг локален идентификатор.
+
+763: 7F2112
+— ECU → Tester (0x763). Negative Response; payload: 7F 21 12.
+— Отказ за service 0x21; NRC 0x12 (subFunction not supported / conditions not correct).
+
+7E0: 10C0
+— Tester → ECU (0x7E0). Single Frame заявка; payload: 10 C0.
+— Стартиране на диагностична сесия.
+
+7E8: 50C0003201F4
+— ECU → Tester (0x7E8). Single Frame отговор; payload: 50 C0 00 03 20 1F.
+— Positive response.
+
+7E0: 2181
+— Tester → ECU (0x7E0). Single Frame заявка; payload: 21 81.
+— Четене на локален идентификатор 0x81.
+
+7E0: FC(CTS, BS=0, STmin=0ms)
+— Tester → ECU (0x7E0). Flow Control: CTS, BS=0, STmin=0 ms.
+— Разрешение към ECU да изпрати многорамковия отговор.
+
+7E8: 6181314E34414C33415039464E3930303136330000
+— ECU → Tester (0x7E8). Сглобен многорамков отговор; payload: 61 81 31 4E 34 41 4C 33 41 50 39 46 4E 39 30 30 31 36 33 00 00.
+— Positive response с данни за идентификатор 0x81.
+
+710: 10C0
+— Tester → ECU (0x710). Single Frame заявка; payload: 10 C0.
+
+710: 10C0
+— Tester → ECU (0x710). Single Frame заявка; payload: 10 C0.
+
+710: 10C0
+— Tester → ECU (0x710). Single Frame заявка; payload: 10 C0.
+
+7E0: 10C0
+— Tester → ECU (0x7E0). Single Frame заявка; payload: 10 C0.
+
+7E8: 50C0003201F4
+— ECU → Tester (0x7E8). Single Frame отговор; payload: 50 C0 00 03 20 1F.
+
+7E0: 22F1A0
+— Tester → ECU (0x7E0). Single Frame заявка; payload: 22 F1 A0.
+— Service 0x22 (ReadDataByIdentifier), DID F1A0 → заявка за VIN.
+
+7E8: 7F2212
+— ECU → Tester (0x7E8). Negative Response; payload: 7F 22 12.
+— Отказ за service 0x22; NRC 0x12 (conditions not correct / request out of range).
