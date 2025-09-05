@@ -1,0 +1,73 @@
+CAN Message Analysis - Line by Line
+===================================
+
+710: 10C0
+→ Gateway/Broadcast ECU: Session Control Request (Extended Session 0xC0)
+
+710: 10C0
+→ Gateway/Broadcast ECU: Session Control Request (Extended Session 0xC0) - Retry
+
+710: 10C0
+→ Gateway/Broadcast ECU: Session Control Request (Extended Session 0xC0) - Retry
+
+740: 10C0
+→ Engine ECU: Session Control Request (Extended Session 0xC0)
+
+740: 2183
+→ Engine ECU: Read Data Request (DID 0x83 - ECU Identification)
+
+743: 10C0
+→ Transmission ECU: Session Control Request (Extended Session 0xC0)
+
+743: 2183
+→ Transmission ECU: Read Data Request (DID 0x83 - ECU Identification)
+
+743: 2180
+→ Transmission ECU: Read Data Request (DID 0x80 - ECU Data)
+
+760: 50C0003201F4
+→ Engine ECU: Session Control Response (Session Established, Timing: P2=50ms, P2*=500ms)
+
+760: 618339484D314134110100026595616529201203000000000080
+→ Engine ECU: Read Data Response (DID 0x83, Data: "9HM1A4" + Version/Calibration)
+
+763: 50C0003201F4
+→ Transmission ECU: Session Control Response (Session Established, Timing: P2=50ms, P2*=500ms)
+
+763: 618339485030411642517F009214190100062003000000000080
+→ Transmission ECU: Read Data Response (DID 0x83, Vehicle/ECU ID + Calibration Data)
+
+763: 7F2112
+→ Transmission ECU: Negative Response (Service 0x21 Not Supported, NRC: 0x12)
+
+7E0: 10C0
+→ OBD-II Tester: Session Control Request (Extended Session 0xC0)
+
+7E0: 2181
+→ OBD-II Tester: Read Data Request (DID 0x81 - VIN Data)
+
+7E0: 10C0
+→ OBD-II Tester: Session Control Request (Extended Session 0xC0) - Retry
+
+7E0: 22F1A0
+→ OBD-II Tester: Read Data Request (DID 0xF1A0 - Vehicle ID Record)
+
+7E8: 50C0003201F4
+→ Generic ECU: Session Control Response (Session Established, Timing: P2=50ms, P2*=500ms)
+
+7E8: 6181314E34414C33415039464E3930303136330000
+→ Generic ECU: Read Data Response (DID 0x81, VIN: "1N4ALC3AP9FN903163")
+
+7E8: 50C0003201F4
+→ Generic ECU: Session Control Response (Session Established, Timing: P2=50ms, P2*=500ms)
+
+7E8: 7F2212
+→ Generic ECU: Negative Response (Service 0x22 Not Supported, NRC: 0x12)
+
+SUMMARY:
+========
+- 8 Session Control messages (requests/responses)
+- 6 Read Data requests for various ECU identification parameters
+- 4 Positive data responses with ECU/vehicle identification
+- 2 Negative responses (unsupported services)
+- Vehicle VIN identified: 1N4ALC3AP9FN903163 (Nissan Altima)
